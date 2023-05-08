@@ -10,12 +10,17 @@ router.get("/", async (req, res) => {
       },
       {
         model: Comment,
-        attributes: ["body"], // specify the attributes you want to retrieve
+        attributes: ["body"],
+        include: {
+          model: User,
+          attributes: ["username", "createdAt"],
+        }, // specify the attributes you want to retrieve
       },
     ],
   });
   const postData = posts.map((post) => post.get({ plain: true }));
   console.log(postData);
+  console.log(postData[0].Comments);
 
   res.render("homePage");
 });
