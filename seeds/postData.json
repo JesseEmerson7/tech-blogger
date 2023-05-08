@@ -1,0 +1,12 @@
+[
+    {
+        "header":"JavaScript words must be camel case.",
+        "body":"I was attempting to write JavaScript without camel casing my variables and things did not seem to be working right.",
+        "UserId":"1"
+    },
+    {
+        "header":"JavaScript is the best.",
+        "body":"I have tried other languages and this seems to be the best to me.",
+        "UserId":"2"
+    }
+]
