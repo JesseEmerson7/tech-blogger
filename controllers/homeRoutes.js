@@ -22,7 +22,7 @@ router.get("/", async (req, res) => {
   console.log(postData);
   console.log(postData[0].Comments);
 
-  res.render("homePage");
+  res.render("homePage",{postData});
 });
 
 module.exports = router;

@@ -1,4 +1,15 @@
 
-<body>
-   
-</body>
+<div>
+   {{#each postData}}
+   <div>
+    <div class = "card-header">
+        <h1>{{header}}</h1>
+        <p>{{user.username}}</p>
+         <p>{{user.createdAt}}</p>
+    </div>
+    <div class = "card-body">
+        <p>{{body}}</p>
+    </div>
+   </div>
+   {{/each}}
+</div>
