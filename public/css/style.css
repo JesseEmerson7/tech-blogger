@@ -1,0 +1,52 @@
+body {
+    min-width: 100%;
+    margin: 0;
+    padding: 0;
+}
+header a {
+    text-decoration: none;
+    color: black;
+    margin-left: 50px;
+    margin-top: 15px;
+    font-size: 1.5rem;
+}
+
+header h1 {
+    margin-left: 10%;
+    background-color: rgb(110, 110, 188);
+    width: 240px;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 5px rgb(65, 55, 55);
+}
+
+header {
+    background-color: rgb(186, 195, 228);
+}
+
+.card-main{
+    text-align: center;
+    background-color: rgb(186, 195, 228);
+}
+
+.card-main-header h1{
+    background-color: rgb(110, 110, 188);
+    font-size: 30px;
+    text-align: left;
+    padding-left: 10%;
+}
+
+.card-main-body{
+    font-size: 22px;
+  
+}
+
+.sign-in-card, .sign-up-card{
+    text-align: center;
+}
+
+.sign-up-question{
+    text-align: center;
+}
