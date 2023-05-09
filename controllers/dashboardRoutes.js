@@ -1,16 +1,15 @@
 const router = require("express").Router();
 const { User, Post, Comment } = require("../models/index");
 
-
-router.get("/", async (req,res)=>{
-    if(!req.session.loggedIn){
-        console.log("not logged in");
-        res.redirect('/signIn')
-    }else{
-        console.log("logged in");
-        res.render('dashboard')
-    }
-})
+router.get("/", async (req, res) => {
+  if (!req.session.loggedIn) {
+    console.log("not logged in");
+    res.redirect("login");
+  } else {
+    console.log("logged in");
+    res.render("dashboard");
+  }
+});
 
 // router.get("/", async (req, res) => {
 //   const posts = await Post.findAll({
