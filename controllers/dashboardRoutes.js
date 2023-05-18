@@ -6,8 +6,20 @@ router.get("/", async (req, res) => {
     console.log("not logged in");
     res.redirect("login");
   } else {
+    const userData = await Post.findAll({
+      where: { UserId: req.session.UserId },
+      include: [
+        {
+          model: User,
+          attributes: ["username"],
+        },
+      ],
+      raw: true,
+    });
+    console.log(userData);
     console.log("logged in");
-    res.render("dashboard");
+    console.log(req.session.UserId);
+    res.render("dashboard", { userData });
   }
 });
 

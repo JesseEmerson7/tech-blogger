@@ -5,3 +5,17 @@
     <a href="/logout">Logout</a></div>
     <h1>Dashboard</h1>
 </header>
+
+{{#each userData}}
+ <div class="card-main">
+    <div class = "card-main-header">
+        <h1>{{header}}</h1>
+        <p>By: {{"User.username"}}</p>
+         <p>Published on: {{createdAt}}</p>
+    </div>
+    <div class = "card-main-body">
+        <p>{{body}}</p>
+    </div>
+   </div>
+
+{{/each}}
