@@ -10,41 +10,19 @@ router.get("/", async (req, res) => {
   } else {
     const userData = await User.findOne(
       {
-        where:{id: req.session.UserId}
+        where:{id: req.session.UserId},
+        include: Post
       },
+      
       {raw: true}
     );
 
-    let {username } = userData.dataValues;
+    let {username, Posts } = userData.dataValues;
     console.log(userData.dataValues);
     console.log("logged in");
     console.log(req.session.UserId);
-    res.render("dashboard", { username });
+    res.render("dashboard", { username, Posts });
   }
 });
-
-// router.get("/", async (req, res) => {
-//   const posts = await Post.findAll({
-//     include: [
-//       {
-//         model: User,
-//         attributes: ["username", "createdAt"],
-//       },
-//       {
-//         model: Comment,
-//         attributes: ["body"],
-//         include: {
-//           model: User,
-//           attributes: ["username", "createdAt"],
-//         }, // specify the attributes you want to retrieve
-//       },
-//     ],
-//   });
-//   const postData = posts.map((post) => post.get({ plain: true }));
-//   console.log(postData);
-//   console.log(postData[0].Comments);
-
-//   res.render("dashboard",{postData});
-// });
 
 module.exports = router;
