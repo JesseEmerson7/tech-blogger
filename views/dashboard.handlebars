@@ -6,12 +6,16 @@
     <h1>Dashboard</h1>
 </header>
 
-<h1>Hello {{username}}</h1>
-
-{{#if Posts}}
+<h1>Hello {{username}} Welcome to your dashboard</h1>
+<button id="create-post">Create New Post</button>
+<div>
+    {{#if Posts}}
 <p>you have posts</p>
 
 
 
 {{/if}}
 <p>You have no posts</p>
+</div>
+
+<script src="./js/dashboard.js"></script>
