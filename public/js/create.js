@@ -19,7 +19,11 @@ const handleFormSub = async (e) => {
     const response = await fetch("/create/post", postHeader);
  
 
-    console.log(response.status);
+    console.log(response);
+    if(response.status === 200){
+        //todo: created a pop up and a delay for the redirect
+        window.location.replace("/");
+    }
   } catch (error) {
     console.log(error);
   }
