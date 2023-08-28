@@ -1,6 +1,7 @@
 const postTitle = document.getElementById("titleInput");
 const postBody = document.getElementById("bodyInput");
 const formButton = document.getElementById("formSubmit");
+const formDiv = document.getElementById("formDiv");
 
 const handleFormSub = async (e) => {
   e.preventDefault();
@@ -17,12 +18,20 @@ const handleFormSub = async (e) => {
   };
   try {
     const response = await fetch("/create/post", postHeader);
- 
 
     console.log(response);
-    if(response.status === 200){
-        //todo: created a pop up and a delay for the redirect
+    if (response.status === 200) {
+      //creating alert pop up and appending it to the bottom of the form
+      //once pop up is there for 1 sec the window will redirect to home
+      const formAlert = document.createElement("h2");
+      formAlert.classList.add("gAlert");
+      formAlert.innerHTML = "successfully posted!";
+      formDiv.append(formAlert);
+      postTitle.value = "";
+      postBody.value = "";
+      setTimeout(() => {
         window.location.replace("/");
+      }, 1000);
     }
   } catch (error) {
     console.log(error);
