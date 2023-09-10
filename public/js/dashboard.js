@@ -6,13 +6,13 @@ const handleCreateBtn = () => {
   window.location.href = "/create";
 };
 
-//todo: edit and delete button for each
+//delete post by id after delete button is clicked
 const handleDeleteBtn = async (e) => {
   if (e.target.className == "deleteBtn") {
     let data = e.target.getAttribute("data");
     console.log(data);
     try {
-      const postData = await fetch("/dashboardRoutes/delete", {
+      const postData = await fetch("/dashboard/delete", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ data: data }),

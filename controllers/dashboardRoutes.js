@@ -33,13 +33,15 @@ router.post("/delete", async (req, res) => {
     res.redirect("login");
   } else {
     console.log(req.body);
-    const postDelete = await Post.destroy(
-      {
-        where: { id: req.body.id },
-      },
+    const postDelete = await Post.destroy({
+      where: { id: req.body.data },
+    });
 
-      { raw: true }
-    );
+    if (postDelete === 0) {
+      console.log("Post not found");
+      res.status(404).send("Post not found");
+    }
+    res.status(200).send("Post deleted");
 
     console.log(postDelete);
   }
