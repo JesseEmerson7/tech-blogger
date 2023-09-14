@@ -6,7 +6,6 @@
     <a href="/logout">Logout</a></div>
   <h1>Dashboard</h1>
 </header>
-
 <h1>Hello {{username}} Welcome to your dashboard</h1>
 <button id="create-post">Create New Post</button>
 <div id="userFeed">
@@ -16,12 +15,24 @@
         <h2>{{this.dataValues.header}}</h2>
         <p>{{this.dataValues.createdAt}}</p>
         <button data={{this.dataValues.id}} class="deleteBtn">Delete</button>
-        <button data={{this.dataValues.id}}>Edit</button>
+        <button data={{this.dataValues.id}} class="editBtn">Edit</button>
       </div>
 
     {{/each}}
 
   {{/if}}
+</div>
+<div class="hidden" id="editDiv">
+  <h3>Post Editor</h3>
+  <label for="title">Title</label>
+  <input type="text" name="title" id="editTitle" />
+  <label for="body">Body</label>
+  <textarea name="body" cols="30" rows="10" id="editBody"></textarea>
+  <div>
+    <button class="btn" id="editConfirmBtn">update</button>
+    <button class="btn" id="editCancelBtn">cancel</button>
+  </div>
+
 </div>
 
 <script src="./js/dashboard.js"></script>

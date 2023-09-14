@@ -1,5 +1,8 @@
 const createBtn = document.getElementById("create-post");
 const feed = document.getElementById("userFeed");
+const editPOpUp = document.getElementById("editDiv");
+const postTitle = document.getElementById("editTitle");
+const postBodyEdit = document.getElementById("editBody");
 
 const handleCreateBtn = () => {
   console.log("clicking");
@@ -25,6 +28,36 @@ const handleDeleteBtn = async (e) => {
         console.log(error);
       }
     }
+  }
+};
+// handle edit button with pop up
+const handleEdit = async (e) => {
+  if (e.target.className == "editBtn") {
+    try {
+      //fetching post data
+      let data = e.target.getAttribute("data");
+      console.log(data);
+      const response = await fetch(`/dashboard/edit/${data}`, {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      });
+      const postData = await response.json();
+      console.log(postData);
+      //add data to text areas
+      postTitle.value = postData.header;
+      postBodyEdit.value = postData.body;
+      //POST fetch to upload new data
+      const isPostUpdated = await handleUpdate(id);
+      //todo!: add promise to fetch function and update db
+
+      //toggle hidden class
+      editPOpUp.classList.toggle("hidden");
+      //handle submit button to update
+
+      //handle cancel button
+
+      //hide pop up and clear text area
+    } catch (error) {}
   }
 };
 
@@ -63,5 +96,19 @@ const confirmDelete = () => {
   });
 };
 
+//update post
+const handleUpdate = async (id) => {
+  const isUpdated = await fetch(`/dashboard/edit/${id}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      title: postTitle.value,
+      body: postBodyEdit.value,
+    }),
+  });
+  console.log(isUpdated.json());
+};
+
 createBtn.addEventListener("click", handleCreateBtn);
 feed.addEventListener("click", handleDeleteBtn);
+feed.addEventListener("click", handleEdit);
