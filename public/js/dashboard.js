@@ -28,7 +28,7 @@ const handleDeleteBtn = async (e) => {
   }
 };
 
-//toDO: add delete pop up to confirm
+//popup to confirm delete button
 const confirmDelete = () => {
   const popUp = document.createElement("div");
   popUp.setAttribute("id", "deletePopUp");
@@ -50,6 +50,7 @@ const confirmDelete = () => {
   popUpText.append(popUpBtn1, popUpBtn2);
   popUp.appendChild(popUpText);
   feed.prepend(popUp);
+  //promise for click answer
   return new Promise((resolve, reject) => {
     popUpBtn1.addEventListener("click", () => {
       feed.removeChild(popUp);
